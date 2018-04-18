@@ -25,7 +25,7 @@ class Target extends React.Component {
 }
 
 
-class Square extends React.Component {
+class Cell extends React.Component {
     render() {
         return (
             <div className="square" style={{width: this.props.boxWidth}}>
@@ -35,7 +35,7 @@ class Square extends React.Component {
     }
 }
 
-class Board extends React.Component {
+class Maze extends React.Component {
 
     componentWillMount() {
         this.rows = parseInt(prompt('How many rows do you want?'), 10);
@@ -51,7 +51,7 @@ class Board extends React.Component {
                 if (i === 2 && j === 2) {
                     totalCells.push(<Player content="P" boxWidth={`${this.size}px`} key = "22"/>);
                 } else {
-                    totalCells.push(<Square content={`${i}${j}`} boxWidth={`${this.size}px`} key = {`${i}${j}`.toString()}/>);
+                    totalCells.push(<Cell content={`${i}${j}`} boxWidth={`${this.size}px`} key = {`${i}${j}`.toString()}/>);
                 }
             }
         }
@@ -65,4 +65,4 @@ class Board extends React.Component {
 }
 
 
-export default Board;
+export default Maze;
