@@ -1,4 +1,6 @@
 import React from 'react';
+import Row from './Row';
+import Cell from './Cell';
 // import './index.css';
 
 
@@ -25,17 +27,6 @@ class Target extends React.Component {
 }
 
 
-class Cell extends React.Component {
-    render() {
-        return (
-            <div className="cell" 
-                 style={this.props.cellDim}>
-                 {this.props.content}
-            </div>
-        );
-    }
-}
-
 class Maze extends React.Component {
 
     constructor(props) {
@@ -43,7 +34,8 @@ class Maze extends React.Component {
         this.state = {
             cells: [null]
         }
-        this.maxMazeSize = 500; // px
+        this.maxMazeSize = 500; // width: 500px
+        this.matrix = [];
     }
     
 
@@ -55,35 +47,35 @@ class Maze extends React.Component {
 
         this.setState({
             cells: Array(this.cells).fill(null)
-        })
+        });
+
     }
 
     componentDidMount() {
-        
-    }
 
-    renderCell(content) {
-        const size = this.size;
-
-        // an equal width, and equal height cell
-        return <Cell 
-                   content={content} 
-                   cellDim = {{width: `${size}px`, height: `${size}px`}} 
-                   key = {content} 
-                />
     }
 
     render() {
 
-        const cells = this.state.cells;
-        const allCells = [];
-        cells.forEach(value => {
-            allCells.push(this.renderCell(value));
-        });
+        let row;
+        for (let mRow = 0; mRow < this.rows; mRow++) {
+            row = [];
+            for (let cRow = 0; cRow < this.cols; cRow++) {
+                row.push(`${mRow}${cRow}`);
+            }
+
+            this.matrix.push(row);
+        }
+
+        let size = Math.round(this.size);
 
         return (
             <div className="maze">
-              {allCells}
+              {this.matrix.map((row, index) => 
+                  <Row key = {index}>
+                    {row.map(cellId => <Cell key = {cellId} id = "" cellDim = {{ width: `${size}px` }} />)}
+                  </Row>
+              )}
             </div>
         )
     }
