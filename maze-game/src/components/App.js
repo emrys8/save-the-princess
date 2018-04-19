@@ -8,7 +8,7 @@ import Cell from './Cell';
 class Player extends React.Component {
     render() {
         return (
-          <div className="square" 
+          <div className="cell player" 
                style={{width: this.props.boxWidth }}>
             {this.props.content}
           </div>
@@ -50,8 +50,10 @@ class Maze extends React.Component {
         randNums.splice(randNums.indexOf(marioCell), 1);
 
         const marioIdx = getRandomCellIdx(cells, marioCell);
+
+        const mario = <Player boxWidth="100%" content="M"/>
         
-        cells[marioIdx] = "M";
+        cells[marioIdx] = mario;
         this.setState({
             cells
         });
