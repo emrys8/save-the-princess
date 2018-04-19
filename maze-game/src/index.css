@@ -12,10 +12,10 @@ body {
   width: 500px;
   height: 500px;
   margin: 50px auto;
-  display: table;
 }
 
 .cell {
-  display: table-cell;
+  /* display: inline-block; */
+  float: left;
   border: 1px solid;
 }
