@@ -56,6 +56,12 @@ class Maze extends React.Component {
         this.setState({
             cells
         });
+
+        // add princesses
+        randNums.map(num => {
+            let pIndex = cells.indexOf(num);
+            cells[pIndex] = "P";
+        });
     }
 
     getMatrix() {
