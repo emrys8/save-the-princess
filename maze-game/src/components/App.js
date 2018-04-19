@@ -1,8 +1,8 @@
 import React from 'react';
+import shortid from 'shortid';
 import _ from 'lodash';
 import Row from './Row';
 import Cell from './Cell';
-// import './index.css';
 
 
 class Player extends React.Component {
@@ -27,76 +27,66 @@ class Target extends React.Component {
     }
 }
 
-
 class Maze extends React.Component {
-
     constructor(props) {
         super(props);
+
+        const matrix = this.getMatrix();
+        const boardCells = flattenMatrix(matrix);
+
+        console.log(boardCells);
+
         this.state = {
-            cells: []
+            cells: boardCells
         }
-        this.maxMazeSize = 500; // width: 500px
-        this.matrix = [];
+
+        this.maxBoardSize = 500; // 500px
+        this.cellWidth = this.maxBoardSize / this.props.height;
     }
-    
 
-    componentWillMount() {
-        this.rows = parseInt(prompt('Enter box width: '), 10);
-        this.cols = parseInt(prompt('Enter enter box height: '), 10);
-        this.cells = this.rows * this.cols;
-        this.size = this.maxMazeSize / this.cols;
-
-        this.setState({
-            cells: Array(this.cells).fill(null)
-        });
-
+    getMatrix() {
+        const cols = this.props.height;
+        const rows = this.props.width;
+        const matrix = [];
         let row;
-        for (let mRow = 0; mRow < this.rows; mRow++) {
+
+        for (let rowx = 0; rowx < rows; rowx++) {
             row = [];
-            for (let cRow = 0; cRow < this.cols; cRow++) {
-                row.push(`${mRow}${cRow}`);
+            for (let col = 0; col < cols; col++) {
+                row.push(`${rowx}${col}`);
             }
 
-            this.matrix.push(row);
+            matrix.push(row);
         }
-
-        // we will not use the matrix to render the cells
-
+        return matrix;
     }
 
-    componentDidMount() {
-        const flatMatrix = _.flatten(this.matrix);
-        this.activeCells = _.sampleSize(flatMatrix, 8);
-        const cells = this.state.cells.slice();
-        const marioCell = _.sampleSize(this.activeCells, 1);
-        
-        const indexes = marioCell[0].split("");
-        const firstIdx = indexes[0];
-        const secondIdx = indexes[1];
-
-        const parsedInt = parseInt(marioCell[0])
-        cells[parsedInt] = "M";
-        this.setState({
-            cells
-        }, () => {
-            // console.log(`cells = ${this.state.cells.length}`);
-            // console.log(this.state.cells);
-        })
-    }
 
     render() {
-        let size = Math.round(this.size);
 
         return (
             <div className="maze">
-              {this.matrix.map((row, index) => 
-                  <Row key = {index}>
-                    {row.map(cellId => <Cell key = {cellId} id = "" cellDim = {{ width: `${size}px` }} />)}
-                  </Row>
-              )}
+              {this.state.cells.map(cell =>
+              <Cell 
+                 id={cell} 
+                 key = {shortid.generate()}
+                 cellDim={{width: `${this.cellWidth}px`}}
+                 />
+            )}
             </div>
         )
     }
+}
+
+/**
+ * @function
+ * @param {Number[][]} matrix
+ * @return {[Number]}
+ * Returns a flattened array
+ */
+function flattenMatrix(matrix) {
+    const flatMatrix = _.flatten(matrix);
+    return flatMatrix;
 }
 
 export default Maze;
