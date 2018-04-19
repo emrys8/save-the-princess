@@ -19,4 +19,5 @@ body {
   border: 1px solid;
   background: whitesmoke;
   text-align: center;
+  cursor: pointer;
 }
