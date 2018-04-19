@@ -34,14 +34,28 @@ class Maze extends React.Component {
         const matrix = this.getMatrix();
         const boardCells = flattenMatrix(matrix);
 
-        console.log(boardCells);
-
         this.state = {
             cells: boardCells
         }
 
         this.maxBoardSize = 500; // 500px
         this.cellWidth = this.maxBoardSize / this.props.height;
+    }
+
+    componentDidMount() {
+        const cells = this.state.cells.slice();
+        const randNums = getRandomNum(cells);
+        const marioCell = _.sampleSize(randNums, 1)[0];
+        randNums.splice(randNums.indexOf(marioCell), 1);
+        console.log(marioCell);
+        console.log(randNums);
+
+        const marioIdx = cells.indexOf(marioCell);
+        console.log(`marioIdx = ${marioIdx}`);
+        cells[marioIdx] = "M";
+        this.setState({
+            cells
+        });
     }
 
     getMatrix() {
@@ -87,6 +101,19 @@ class Maze extends React.Component {
 function flattenMatrix(matrix) {
     const flatMatrix = _.flatten(matrix);
     return flatMatrix;
+}
+
+/**
+ * 
+ * @function getRandomNum
+ * @param {[Number]} array
+ * @param {Number} size
+ * @return {[Number]}
+ * Returns a random collection of numbers
+ */
+function getRandomNum(array, size=10) {
+    const randCells = _.sampleSize(array, size);
+    return randCells;
 }
 
 export default Maze;
