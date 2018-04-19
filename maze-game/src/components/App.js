@@ -45,13 +45,12 @@ class Maze extends React.Component {
     componentDidMount() {
         const cells = this.state.cells.slice();
         const randNums = getRandomNum(cells);
-        const marioCell = _.sampleSize(randNums, 1)[0];
+        const marioCell = getRandomNum(cells, 1)[0];
+        
         randNums.splice(randNums.indexOf(marioCell), 1);
-        console.log(marioCell);
-        console.log(randNums);
 
-        const marioIdx = cells.indexOf(marioCell);
-        console.log(`marioIdx = ${marioIdx}`);
+        const marioIdx = getRandomCellIdx(cells, marioCell);
+        
         cells[marioIdx] = "M";
         this.setState({
             cells
@@ -59,7 +58,7 @@ class Maze extends React.Component {
 
         // add princesses
         randNums.map(num => {
-            let pIndex = cells.indexOf(num);
+            let pIndex = getRandomCellIdx(cells, num);
             cells[pIndex] = "P";
         });
     }
@@ -120,6 +119,17 @@ function flattenMatrix(matrix) {
 function getRandomNum(array, size=10) {
     const randCells = _.sampleSize(array, size);
     return randCells;
+}
+
+/**
+ * @function getRandomCellIdx
+ * @param {[Number]} arr
+ * @param {Number} num
+ * @return {Number}
+ * Returns the zero-based index of 'num' in 'arr'
+ */
+function getRandomCellIdx(arr, num) {
+    return arr.indexOf(num);
 }
 
 export default Maze;
