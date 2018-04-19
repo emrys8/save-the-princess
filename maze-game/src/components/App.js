@@ -38,8 +38,8 @@ class Cell extends React.Component {
 class Maze extends React.Component {
 
     componentWillMount() {
-        this.rows = parseInt(prompt('How many rows do you want?'), 10);
-        this.cols = parseInt(prompt('How many columns do you want?'), 10);
+        this.rows = parseInt(prompt('Please enter box width: '), 10);
+        this.cols = parseInt(prompt('Please enter box height: '), 10);
         this.cells = this.row * this.cols;
         this.size = 500 / this.cols;
     }

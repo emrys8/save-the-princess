@@ -8,13 +8,13 @@ body {
   margin: 0 auto;
 }
 
-.board {
+.maze {
   width: 500px;
   height: 500px;
   margin: 50px auto;
 }
 
-.square {
+.cell {
   display: inline-block;
   border: 1px solid;
   height: 50px;
