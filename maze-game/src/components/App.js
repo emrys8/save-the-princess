@@ -54,12 +54,12 @@ class Maze extends React.Component {
         this.size = this.maxMazeSize / this.cols;
 
         this.setState({
-            cells: Array(this.cells).fill(null),
+            cells: Array(this.cells).fill(null)
         })
     }
 
     componentDidMount() {
-
+        
     }
 
     renderCell(content) {
