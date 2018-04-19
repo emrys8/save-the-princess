@@ -9,7 +9,8 @@ class Player extends React.Component {
     render() {
         return (
           <div className="cell player" 
-               style={{width: this.props.boxWidth }}>
+               style={{width: this.props.boxWidth }}
+               onClick={this.props.onClick}>
             {this.props.content}
           </div>
         )
@@ -40,6 +41,9 @@ class Maze extends React.Component {
 
         this.maxBoardSize = 500; // 500px
         this.cellWidth = this.maxBoardSize / this.props.height;
+
+        
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
@@ -51,7 +55,9 @@ class Maze extends React.Component {
 
         const marioIdx = getRandomCellIdx(cells, marioCell);
 
-        const mario = <Player boxWidth="100%" content="M"/>
+        const mario = <Player boxWidth="100%" 
+                              content="M"
+                              onClick = {this.handleClick} />
         
         cells[marioIdx] = mario;
         this.setState({
@@ -63,6 +69,10 @@ class Maze extends React.Component {
             let pIndex = getRandomCellIdx(cells, num);
             cells[pIndex] = "P";
         });
+    }
+
+    handleClick() {
+        alert('Moving Mario to save princesses...');
     }
 
     getMatrix() {
