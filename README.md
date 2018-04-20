@@ -28,9 +28,9 @@ The lesser the number of moves made by Mario, the better.
        $ npm start
     ```
 3. Enter the box width and height, if you don't enter anything, the game assumes 10 by 10 for you.
-4. Click the Mario in the board
-5. Watch as Mario tried to find all princesses by making less moves.
+4. Click the Mario in the board.
+5. Watch as Mario try to find all princesses by making less moves.
 
 
 ## Extras
-This game is still in dev stage, when it's complete, I intend to host it and share the link here. For better UI experience, use width 
+This game is still in dev stage, when it's complete, I intend to host it and share the link here.
