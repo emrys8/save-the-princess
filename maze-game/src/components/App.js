@@ -7,12 +7,23 @@ import Cell from './Cell';
 
 class Player extends React.Component {
     render() {
+        // return (
+        //   <div className="cell player" 
+        //        style={{width: this.props.boxWidth }}
+        //        onClick={this.props.onClick}>
+        //     {this.props.content}
+        //   </div>
+        // )
+
         return (
-          <div className="cell player" 
-               style={{width: this.props.boxWidth }}
-               onClick={this.props.onClick}>
-            {this.props.content}
-          </div>
+            <div className="cell player">
+              <img
+                 style = {{width: this.props.boxWidth}}
+                 onClick={this.props.onClick}
+                 src={this.props.imageSrc}
+                 alt={this.props.attribText}
+              />
+            </div>
         )
     }
 }
@@ -55,8 +66,9 @@ class Maze extends React.Component {
 
         const marioIdx = getRandomCellIdx(cells, marioCell);
 
-        const mario = <Player boxWidth="100%" 
-                              content="M"
+        const mario = <Player boxWidth="40%" 
+                              imageSrc="./assets/mario.png"
+                              attribText="Jumping Mario"
                               onClick = {this.handleClick} />
         
         cells[marioIdx] = mario;
@@ -85,7 +97,7 @@ class Maze extends React.Component {
         for (let rowx = 0; rowx < rows; rowx++) {
             row = [];
             for (let col = 0; col < cols; col++) {
-                row.push(`${rowx}${col}`);
+                row.push(<p></p>);
             }
 
             matrix.push(row);
