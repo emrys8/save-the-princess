@@ -96,6 +96,7 @@ class Maze extends React.Component {
     getMatrix() {
         const cols = this.props.height;
         const rows = this.props.width;
+        
         const matrix = [];
         let row;
 
