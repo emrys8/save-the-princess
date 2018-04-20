@@ -16,14 +16,13 @@ class Player extends React.Component {
         // )
 
         return (
-            <div className="cell player">
-              <img
+            
+              <img className="player"
                  style = {{width: this.props.boxWidth}}
                  onClick={this.props.onClick}
                  src={this.props.imageSrc}
                  alt={this.props.attribText}
               />
-            </div>
         )
     }
 }
@@ -31,10 +30,12 @@ class Player extends React.Component {
 class Target extends React.Component {
     render() {
         return (
-            <div className="square" 
-                 style={{width: this.props.boxWidth }}>
-                 {this.props.content}
-            </div>
+                <img className="player"
+                    style={{width: this.props.boxWidth }}
+                    onClick={this.props.onClick}
+                    src={this.props.imageSrc}
+                    alt={this.props.attribText}
+                />
         )
     }
 }
@@ -79,7 +80,11 @@ class Maze extends React.Component {
         // add princesses
         randNums.map(num => {
             let pIndex = getRandomCellIdx(cells, num);
-            cells[pIndex] = "P";
+            const princess = <Target boxWidth="40%"
+                                     imageSrc="./assets/princess.png"
+                                     attribText="A pretty princess with a crown" 
+                              />
+            cells[pIndex] = princess;
         });
     }
 

@@ -27,6 +27,8 @@ body {
 }
 
 .player {
-  margin-top: 10px;
-  border: 0;
+  position: relative;
+  top: 7px;
+  left: auto;
+  background-color: none;
 }
