@@ -1,7 +1,7 @@
 # save-the-princess
 Save-the-Princess is a game built with ReactJS. It depicts the maze problem. In this game, the player attempts to save the princess in a short possible amount of moves
 
-[![Save the Princess (Maze Game)](https://imgur.com/a/IInmFcM)](https://github.com/emrys8/save-the-princess)
+[![Save the Princess (Maze Game)](https://i.imgur.com/SL4Oz67.png)](https://github.com/emrys8/save-the-princess)
 
 [![npm version](https://badge.fury.io/js/npm.svg)](https://badge.fury.io/js/npm)
 [![npm version](https://badge.fury.io/js/react.svg)](https://badge.fury.io/js/react)
@@ -23,8 +23,10 @@ The lesser the number of moves made by Mario, the better.
 
 ## How to Play
 1. Install Dependencies, look up to the Installation section above for more details.
-2. type ```bash 
-        $ npm start```
+2. type 
+    ```bash 
+       $ npm start
+    ```
 3. Enter the box width and height, if you don't enter anything, the game assumes 10 by 10 for you.
 4. Click the Mario in the board
 5. Watch as Mario tried to find all princesses by making less moves.
