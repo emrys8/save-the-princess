@@ -10,8 +10,12 @@ import './index.css';
 // );
 
 function initGame() {
-    const boxWidth = prompt('Enter box width: ');
-    const boxHeight = prompt('Enter box height: ');
+    let boxWidth = parseInt(prompt('Please enter box width: '), 10);
+    let boxHeight = parseInt(prompt('Please enter box height: '), 10);
+
+    if (Number.isNaN(boxWidth) || Number.isNaN(boxHeight)) {
+        [boxWidth, boxHeight] = [10, 10];
+    }
 
     ReactDOM.render(
         <Maze width = {boxWidth} height={boxHeight} />,

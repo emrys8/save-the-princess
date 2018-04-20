@@ -72,6 +72,7 @@ class Maze extends React.Component {
     }
 
     handleClick() {
+        // to be implemented
         alert('Moving Mario to save princesses...');
     }
 
